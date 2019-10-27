@@ -220,7 +220,7 @@ namespace WowPacketParserModule.V7_0_3_22248.Parsers
         public static void HandleLfgListSearchResults(Packet packet)
         {
             packet.ReadUInt16("TotalResults");
-            var resultCount = packet.ReadUInt32("TotalResults");
+            var resultCount = packet.ReadUInt32();
 
             for (int j = 0; j < resultCount; j++)
                 ReadLfgListSearchResult(packet, "Entry", j);
@@ -348,14 +348,14 @@ namespace WowPacketParserModule.V7_0_3_22248.Parsers
         public static void HandleLfgListApplicantListUpdate(Packet packet)
         {
             V6_0_2_19033.Parsers.LfgHandler.ReadCliRideTicket(packet, "Ticket");
-            var applicantCount = packet.ReadUInt32("ApplicantCount");
+            var applicantCount = packet.ReadUInt32();
             packet.ReadUInt32("Result");
 
             for (int i = 0; i < applicantCount; i++)
             {
                 V6_0_2_19033.Parsers.LfgHandler.ReadCliRideTicket(packet, i, "Ticket");
                 packet.ReadPackedGuid128("Joiner", i);
-                var memberCount = packet.ReadUInt32("MemberCount");
+                var memberCount = packet.ReadUInt32();
                 for (int j = 0; j < memberCount; j++)
                 {
                     packet.ReadPackedGuid128("Guid", i, j);
@@ -366,7 +366,7 @@ namespace WowPacketParserModule.V7_0_3_22248.Parsers
                     packet.ReadByteE<LfgRoleFlag>("Queued role", i, j);
                     packet.ReadByteE<LfgRoleFlag>("Assigned role", i, j);
 
-                    var provingGroundRankNum = packet.ReadUInt32("ProvingGroundRankNum");
+                    var provingGroundRankNum = packet.ReadUInt32();
                     for (int x = 0; x < provingGroundRankNum; x++)
                     {
                         packet.ReadUInt32("CriteriaID", i, j, x);
