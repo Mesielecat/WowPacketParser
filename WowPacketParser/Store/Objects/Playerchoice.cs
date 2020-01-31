@@ -1,4 +1,5 @@
-﻿using WowPacketParser.Misc;
+﻿using WowPacketParser.Enums;
+using WowPacketParser.Misc;
 using WowPacketParser.SQL;
 
 namespace WowPacketParser.Store.Objects
@@ -9,16 +10,16 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("ChoiceId", true)]
         public int? ChoiceId;
 
-        [DBFieldName("UiTextureKitId")]
+        [DBFieldName("UiTextureKitId", TargetedDatabase.Legion)]
         public int? UiTextureKitId;
 
         [DBFieldName("Question")]
         public string Question;
 
-        [DBFieldName("HideWarboardHeader")]
+        [DBFieldName("HideWarboardHeader", TargetedDatabase.Legion)]
         public int HideWarboardHeader;
 
-        [DBFieldName("KeepOpenAfterChoice")]
+        [DBFieldName("KeepOpenAfterChoice", TargetedDatabase.BattleForAzeroth)]
         public int KeepOpenAfterChoice;
 
         [DBFieldName("VerifiedBuild")]
@@ -56,16 +57,16 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("ChoiceArtFileId")]
         public int? ChoiceArtFileId;
 
-        [DBFieldName("Flags")]
+        [DBFieldName("Flags", TargetedDatabase.BattleForAzeroth)]
         public int? Flags;
 
-        [DBFieldName("WidgetSetId")]
+        [DBFieldName("WidgetSetId", TargetedDatabase.BattleForAzeroth)]
         public uint? WidgetSetId;
 
-        [DBFieldName("GroupId")]
+        [DBFieldName("GroupId", TargetedDatabase.BattleForAzeroth)]
         public int? GroupId;
 
-        [DBFieldName("Header")]
+        [DBFieldName("Header", TargetedDatabase.Legion)]
         public string Header;
 
         [DBFieldName("Answer")]
@@ -74,7 +75,7 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("Description")]
         public string Description;
 
-        [DBFieldName("Confirmation")]
+        [DBFieldName("Confirmation", TargetedDatabase.Legion)]
         public string Confirmation;
 
         [DBFieldName("VerifiedBuild")]
@@ -93,7 +94,7 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("Locale")]
         public string Locale;
 
-        [DBFieldName("Header")]
+        [DBFieldName("Header", TargetedDatabase.Legion)]
         public string Header;
 
         [DBFieldName("Answer")]
@@ -102,7 +103,7 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("Description")]
         public string Description;
 
-        [DBFieldName("Confirmation")]
+        [DBFieldName("Confirmation", TargetedDatabase.Legion)]
         public string Confirmation;
 
         [DBFieldName("VerifiedBuild")]

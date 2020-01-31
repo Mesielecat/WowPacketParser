@@ -806,10 +806,7 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
             Storage.PlayerChoices.Add(new PlayerChoiceTemplate
             {
                 ChoiceId = choiceId,
-                UiTextureKitId = 0,
-                Question = question,
-                HideWarboardHeader = 0,
-                KeepOpenAfterChoice = 0,
+                Question = question
             }, packet.TimeSpan);
 
             if (ClientLocale.PacketLocale != LocaleConstant.enUS)
@@ -818,7 +815,7 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
                 {
                     ChoiceId = choiceId,
                     Locale = ClientLocale.PacketLocaleString,
-                    Question = question,
+                    Question = question
                 }, packet.TimeSpan);
             }
         }
@@ -846,13 +843,8 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
                 ResponseId = responseId,
                 Index = index,
                 ChoiceArtFileId = choiceArtFileId,
-                Flags = 0,
-                WidgetSetId = 0,
-                GroupId = 0,
-                Header = "",
                 Answer = answer,
-                Description = description,
-                Confirmation = ""
+                Description = description
             }, packet.TimeSpan);
 
             if (ClientLocale.PacketLocale != LocaleConstant.enUS)
@@ -862,10 +854,8 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
                     ChoiceId = choiceId,
                     ResponseId = responseId,
                     Locale = ClientLocale.PacketLocaleString,
-                    Header = "",
                     Answer = answer,
-                    Description = description,
-                    Confirmation = ""
+                    Description = description
                 }, packet.TimeSpan);
             }
         }
@@ -953,7 +943,7 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
                 Index = index,
                 ItemId = itemId,
                 BonusListIDs = bonusIDs,
-                Quantity = quantity,
+                Quantity = quantity
             }, packet.TimeSpan);
         }
 
@@ -978,7 +968,7 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
                 ResponseId = responseId,
                 Index = index,
                 CurrencyId = itemId,
-                Quantity = quantity,
+                Quantity = quantity
             }, packet.TimeSpan);
         }
 

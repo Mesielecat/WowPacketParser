@@ -620,7 +620,7 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
                 UiTextureKitId = uiTextureKitId,
                 Question = question,
                 HideWarboardHeader = hideWarboardHeader,
-                KeepOpenAfterChoice = keepOpenAfterChoice,
+                KeepOpenAfterChoice = keepOpenAfterChoice
             }, packet.TimeSpan);
 
             if (ClientLocale.PacketLocale != LocaleConstant.enUS)
@@ -629,7 +629,7 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
                 {
                     ChoiceId = choiceId,
                     Locale = ClientLocale.PacketLocaleString,
-                    Question = question,
+                    Question = question
                 }, packet.TimeSpan);
             }
         }
@@ -793,7 +793,7 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
                 Index = index,
                 ItemId = itemId,
                 BonusListIDs = bonusIDs,
-                Quantity = quantity,
+                Quantity = quantity
             }, packet.TimeSpan);
         }
 
@@ -818,7 +818,7 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
                 ResponseId = responseId,
                 Index = index,
                 CurrencyId = itemId,
-                Quantity = quantity,
+                Quantity = quantity
             }, packet.TimeSpan);
         }
 
