@@ -802,28 +802,18 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
 
             var questionLength = packet.ReadBits(8);
             var question = packet.ReadWoWString("Question", questionLength);
-            if (ClientLocale.PacketLocale == LocaleConstant.enUS)
-            {
-                Storage.PlayerChoices.Add(new PlayerChoiceTemplate
-                {
-                    ChoiceId = choiceId,
-                    UiTextureKitId = 0,
-                    Question = question,
-                    HideWarboardHeader = 0,
-                    KeepOpenAfterChoice = 0,
-                }, packet.TimeSpan);
-            }
-            else
-            {
-                Storage.PlayerChoices.Add(new PlayerChoiceTemplate
-                {
-                    ChoiceId = choiceId,
-                    UiTextureKitId = 0,
-                    Question = question,
-                    HideWarboardHeader = 0,
-                    KeepOpenAfterChoice = 0,
-                }, packet.TimeSpan);
 
+            Storage.PlayerChoices.Add(new PlayerChoiceTemplate
+            {
+                ChoiceId = choiceId,
+                UiTextureKitId = 0,
+                Question = question,
+                HideWarboardHeader = 0,
+                KeepOpenAfterChoice = 0,
+            }, packet.TimeSpan);
+
+            if (ClientLocale.PacketLocale != LocaleConstant.enUS)
+            {
                 Storage.PlayerChoiceLocales.Add(new PlayerChoiceLocaleTemplate
                 {
                     ChoiceId = choiceId,
@@ -850,40 +840,23 @@ namespace WowPacketParserModule.V6_0_2_19033.Parsers
             if (hasReward)
                 ReadPlayerChoiceResponseReward(packet, choiceId, responseId, "PlayerChoiceResponseReward", indexes);
 
-            if (ClientLocale.PacketLocale == LocaleConstant.enUS)
+            Storage.PlayerChoiceResponses.Add(new PlayerChoiceResponseTemplate
             {
-                Storage.PlayerChoiceResponses.Add(new PlayerChoiceResponseTemplate
-                {
-                    ChoiceId = choiceId,
-                    ResponseId = responseId,
-                    Index = index,
-                    ChoiceArtFileId = choiceArtFileId,
-                    Flags = 0,
-                    WidgetSetId = 0,
-                    GroupId = 0,
-                    Header = "",
-                    Answer = answer,
-                    Description = description,
-                    Confirmation = ""
-                }, packet.TimeSpan);
-            }
-            else
-            {
-                Storage.PlayerChoiceResponses.Add(new PlayerChoiceResponseTemplate
-                {
-                    ChoiceId = choiceId,
-                    ResponseId = responseId,
-                    Index = index,
-                    ChoiceArtFileId = choiceArtFileId,
-                    Flags = 0,
-                    WidgetSetId = 0,
-                    GroupId = 0,
-                    Header = "",
-                    Answer = answer,
-                    Description = description,
-                    Confirmation = ""
-                }, packet.TimeSpan);
+                ChoiceId = choiceId,
+                ResponseId = responseId,
+                Index = index,
+                ChoiceArtFileId = choiceArtFileId,
+                Flags = 0,
+                WidgetSetId = 0,
+                GroupId = 0,
+                Header = "",
+                Answer = answer,
+                Description = description,
+                Confirmation = ""
+            }, packet.TimeSpan);
 
+            if (ClientLocale.PacketLocale != LocaleConstant.enUS)
+            {
                 Storage.PlayerChoiceResponseLocales.Add(new PlayerChoiceResponseLocaleTemplate
                 {
                     ChoiceId = choiceId,
