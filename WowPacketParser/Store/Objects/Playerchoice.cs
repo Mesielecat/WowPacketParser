@@ -13,6 +13,9 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("UiTextureKitId", TargetedDatabase.Legion)]
         public int? UiTextureKitId;
 
+        [DBFieldName("SoundKitId", TargetedDatabase.BattleForAzeroth)]
+        public uint? SoundKitId;        
+
         [DBFieldName("Question")]
         public string Question;
 
@@ -63,11 +66,23 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("WidgetSetId", TargetedDatabase.BattleForAzeroth)]
         public uint? WidgetSetId;
 
+        [DBFieldName("UiTextureAtlasElementID", TargetedDatabase.BattleForAzeroth)]
+        public uint? UiTextureAtlasElementID;
+
+        [DBFieldName("SoundKitId", TargetedDatabase.BattleForAzeroth)]
+        public uint? SoundKitId;
+
         [DBFieldName("GroupId", TargetedDatabase.BattleForAzeroth)]
         public int? GroupId;
 
         [DBFieldName("Header", TargetedDatabase.Legion)]
         public string Header;
+
+        [DBFieldName("Subheader", TargetedDatabase.BattleForAzeroth)]
+        public string Subheader;
+
+        [DBFieldName("ButtonTooltip", TargetedDatabase.BattleForAzeroth)]
+        public string ButtonTooltip;
 
         [DBFieldName("Answer")]
         public string Answer;
@@ -77,6 +92,9 @@ namespace WowPacketParser.Store.Objects
 
         [DBFieldName("Confirmation", TargetedDatabase.Legion)]
         public string Confirmation;
+
+        [DBFieldName("UiTextureAtlasElementID", TargetedDatabase.BattleForAzeroth)]
+        public uint? RewardQuestID;
 
         [DBFieldName("VerifiedBuild")]
         public int? VerifiedBuild = ClientVersion.BuildInt;
@@ -96,6 +114,12 @@ namespace WowPacketParser.Store.Objects
 
         [DBFieldName("Header", TargetedDatabase.Legion)]
         public string Header;
+
+        [DBFieldName("Subheader", TargetedDatabase.BattleForAzeroth)]
+        public string Subheader;
+
+        [DBFieldName("ButtonTooltip", TargetedDatabase.BattleForAzeroth)]
+        public string ButtonTooltip;
 
         [DBFieldName("Answer")]
         public string Answer;

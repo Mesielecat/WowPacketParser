@@ -601,8 +601,9 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
             var responseCount = packet.ReadUInt32();
             packet.ReadPackedGuid128("SenderGUID");
             var uiTextureKitId = packet.ReadInt32("UiTextureKitID");
+            var soundKitId = 0u;
             if (ClientVersion.AddedInVersion(ClientVersionBuild.V8_1_0_28724))
-                packet.ReadUInt32("SoundKitID");
+                soundKitId = packet.ReadUInt32("SoundKitID");
             packet.ResetBitReader();
             var questionLength = packet.ReadBits(8);
             packet.ReadBit("CloseChoiceFrame");
@@ -618,6 +619,7 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
             {
                 ChoiceId = choiceId,
                 UiTextureKitId = uiTextureKitId,
+                SoundKitId = soundKitId,
                 Question = question,
                 HideWarboardHeader = hideWarboardHeader,
                 KeepOpenAfterChoice = keepOpenAfterChoice
@@ -640,10 +642,12 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
             var choiceArtFileId = packet.ReadInt32("ChoiceArtFileID", indexes);
             var flags = packet.ReadInt32("Flags", indexes);
             var widgetSetId = packet.ReadUInt32("WidgetSetID", indexes);
+            var uiTextureAtlasElementID = 0u;
+            var soundKitId = 0u;
             if (ClientVersion.AddedInVersion(ClientVersionBuild.V8_1_5_29683))
             {
-                packet.ReadUInt32("UiTextureAtlasElementID");
-                packet.ReadUInt32("SoundKitID");
+                uiTextureAtlasElementID = packet.ReadUInt32("UiTextureAtlasElementID");
+                soundKitId = packet.ReadUInt32("SoundKitID");
                 if (ClientVersion.RemovedInVersion(ClientVersionBuild.V8_1_5_29683))
                     packet.ReadUInt32("Unk801");
             }
@@ -669,15 +673,16 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
 
             var answer = packet.ReadWoWString("Answer", answerLength, indexes);
             var header = packet.ReadWoWString("Header", headerLength, indexes);
-            packet.ReadWoWString("SubHeader", subHeaderLength, indexes);
-            packet.ReadWoWString("ButtonTooltip", buttonTooltipLength, indexes);
+            var subheader = packet.ReadWoWString("SubHeader", subHeaderLength, indexes);
+            var buttonTooltip = packet.ReadWoWString("ButtonTooltip", buttonTooltipLength, indexes);
             var description = packet.ReadWoWString("Description", descriptionLength, indexes);
             var confirmation = packet.ReadWoWString("ConfirmationText", confirmationTextLength, indexes);
 
+            var rewardQuestID = 0u;
             if (ClientVersion.AddedInVersion(ClientVersionBuild.V8_1_5_29683))
             {
                 if (hasRewardQuestID)
-                    packet.ReadUInt32("RewardQuestID");
+                    rewardQuestID = packet.ReadUInt32("RewardQuestID");
             }
 
             Storage.PlayerChoiceResponses.Add(new PlayerChoiceResponseTemplate
@@ -688,11 +693,16 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
                 ChoiceArtFileId = choiceArtFileId,
                 Flags = flags,
                 WidgetSetId = widgetSetId,
+                UiTextureAtlasElementID = uiTextureAtlasElementID,
+                SoundKitId = soundKitId,
                 GroupId = groupID,
                 Header = header,
+                Subheader = subheader,
+                ButtonTooltip = buttonTooltip,
                 Answer = answer,
                 Description = description,
-                Confirmation = confirmation
+                Confirmation = confirmation,
+                RewardQuestID = rewardQuestID
             }, packet.TimeSpan);            
 
             if (ClientLocale.PacketLocale != LocaleConstant.enUS)
@@ -703,8 +713,10 @@ namespace WowPacketParserModule.V8_0_1_27101.Parsers
                     ResponseId = responseId,
                     Locale = ClientLocale.PacketLocaleString,
                     Header = header,
-                    Answer = answer,
+                    Subheader = subheader,
+                    ButtonTooltip = buttonTooltip,
                     Description = description,
+                    Answer = answer,
                     Confirmation = confirmation
                 }, packet.TimeSpan);
             }
