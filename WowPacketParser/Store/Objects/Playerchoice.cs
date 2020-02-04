@@ -54,7 +54,7 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("ResponseId", true)]
         public int? ResponseId;
 
-        [DBFieldName("Index")]
+        [DBFieldName("Index", true)]
         public uint? Index;
 
         [DBFieldName("ChoiceArtFileId")]
@@ -180,7 +180,7 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("ResponseId", true)]
         public int? ResponseId;
 
-        [DBFieldName("Index")]
+        [DBFieldName("Index", true)]
         public uint? Index;
 
         [DBFieldName("CurrencyId")]
@@ -202,7 +202,7 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("ResponseId", true)]
         public uint? ResponseId;
 
-        [DBFieldName("Index")]
+        [DBFieldName("Index", true)]
         public uint? Index;
 
         [DBFieldName("FactionId")]
@@ -224,7 +224,7 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("ResponseId", true)]
         public int? ResponseId;
 
-        [DBFieldName("Index")]
+        [DBFieldName("Index", true)]
         public uint? Index;
 
         [DBFieldName("ItemId")]
