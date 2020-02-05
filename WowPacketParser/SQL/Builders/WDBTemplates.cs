@@ -197,21 +197,7 @@ namespace WowPacketParser.SQL.Builders
             var templatesDb = SQLDatabase.Get(Storage.PlayerChoices);
 
             return SQLUtil.Compare(Storage.PlayerChoices, templatesDb, StoreNameType.PlayerChoice);
-        }
-
-        [BuilderMethod]
-        public static string PlayerChoiceLocale()
-        {
-            if (!Settings.SQLOutputFlag.HasAnyFlagBit(SQLOutput.playerchoice))
-                return string.Empty;
-
-            if (Storage.PlayerChoiceLocales.IsEmpty())
-                return string.Empty;
-
-            var templatesDb = SQLDatabase.Get(Storage.PlayerChoiceLocales);
-
-            return SQLUtil.Compare(Storage.PlayerChoiceLocales, templatesDb, StoreNameType.PlayerChoice);
-        }
+        }        
 
         [BuilderMethod]
         public static string PlayerChoiceResponse()
@@ -225,20 +211,6 @@ namespace WowPacketParser.SQL.Builders
             var templatesDb = SQLDatabase.Get(Storage.PlayerChoiceResponses);
 
             return SQLUtil.Compare(Storage.PlayerChoiceResponses, templatesDb, StoreNameType.PlayerChoice);
-        }
-
-        [BuilderMethod]
-        public static string PlayerChoiceResponseLocale()
-        {
-            if (!Settings.SQLOutputFlag.HasAnyFlagBit(SQLOutput.playerchoice))
-                return string.Empty;
-
-            if (Storage.PlayerChoiceResponseLocales.IsEmpty())
-                return string.Empty;
-
-            var templatesDb = SQLDatabase.Get(Storage.PlayerChoiceResponseLocales);
-
-            return SQLUtil.Compare(Storage.PlayerChoiceResponseLocales, templatesDb, StoreNameType.PlayerChoice);
         }
 
         [BuilderMethod]
