@@ -77,7 +77,7 @@ namespace WowPacketParser.Store.Objects
         [DBFieldName("Confirmation", TargetedDatabase.Legion)]
         public string Confirmation;
 
-        [DBFieldName("UiTextureAtlasElementID", TargetedDatabase.BattleForAzeroth)]
+        [DBFieldName("RewardQuestID", TargetedDatabase.BattleForAzeroth)]
         public uint? RewardQuestID;
 
         [DBFieldName("VerifiedBuild")]
